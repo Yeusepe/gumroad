@@ -399,7 +399,7 @@ const FileEmbedNodeView = ({ node, editor, getPos, updateAttributes }: NodeViewP
                 </label>
                 <div>
                   The thumbnail image is shown as a preview in the embedded video player. Your image should have a 16:9
-                  aspect ratio, at least 1280x720px, and be in JPG, PNG, or GIF format.
+                  aspect ratio, at least 1280x720px, and be in JPG, PNG, GIF, WebM, or WebP format.
                 </div>
                 <div role="separator">or</div>
                 <div>

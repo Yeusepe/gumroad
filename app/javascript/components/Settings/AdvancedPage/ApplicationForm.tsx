@@ -14,7 +14,7 @@ import { showAlert } from "$app/components/server-components/Alert";
 import { Application } from "$app/components/server-components/Settings/AdvancedPage/EditApplicationPage";
 import { WithTooltip } from "$app/components/WithTooltip";
 
-const ALLOWED_ICON_EXTENSIONS = ["jpeg", "jpg", "png"];
+const ALLOWED_ICON_EXTENSIONS = ["jpeg", "jpg", "png", "webm", "webp"];
 
 const ApplicationForm = ({ application }: { application?: Application }) => {
   const [name, setName] = React.useState<{ value: string; error?: boolean }>({ value: application?.name ?? "" });

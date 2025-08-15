@@ -756,7 +756,7 @@ describe ProductFile do
         product_file.thumbnail.attach(io: File.open(Rails.root.join("spec", "support", "fixtures", "sample_doc.docx")), filename: "sample_doc.docx")
 
         expect(product_file).to be_invalid
-        expect(product_file.errors.full_messages).to include("Please upload a thumbnail in JPG, PNG, or GIF format.")
+        expect(product_file.errors.full_messages).to include("Please upload a thumbnail in JPG, PNG, GIF, WebM, or WebP format.")
       end
 
       it "marks invalid if the attached thumbnail is too large" do

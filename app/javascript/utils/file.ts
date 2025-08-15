@@ -2,7 +2,7 @@ import { cast } from "ts-safe-cast";
 
 import { last } from "$app/utils/array";
 
-export const ALLOWED_EXTENSIONS = ["jpeg", "jpg", "png", "gif", "webp"];
+export const ALLOWED_EXTENSIONS = ["jpeg", "jpg", "png", "gif", "webp", "webm"];
 
 const FileUtils = {
   getReadableFileSize: (bytes: number): string => {

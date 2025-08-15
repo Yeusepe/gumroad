@@ -65,7 +65,7 @@ module WithProductFiles
         product_file.thumbnail.attach thumbnail_signed_id if thumbnail_signed_id.present?
       rescue ActiveRecord::RecordInvalid => e
         link&.errors&.add(:base, "#{file_params[:url]} is not a valid URL.") if e.message.include?("#{file_params[:url]} is not a valid URL.")
-        link&.errors&.add(:base, "Please upload a thumbnail in JPG, PNG, or GIF format.") if e.message.include?("Please upload a thumbnail in JPG, PNG, or GIF format.")
+        link&.errors&.add(:base, "Please upload a thumbnail in JPG, PNG, GIF, WebM, or WebP format.") if e.message.include?("Please upload a thumbnail in JPG, PNG, GIF, WebM, or WebP format.")
         link&.errors&.add(:base, "Could not process your thumbnail, please upload an image with size smaller than 5 MB.") if e.message.include?("Could not process your thumbnail, please upload an image with size smaller than 5 MB.")
         raise e
       end

@@ -4,7 +4,7 @@ class ProductFile < ApplicationRecord
   include S3Retrievable, WithFileProperties, ExternalId, SignedUrlHelper, JsonData, SendableToKindle, Deletable,
           CdnDeletable, FlagShihTzu, CdnUrlHelper, Streamable
 
-  SUPPORTED_THUMBNAIL_IMAGE_CONTENT_TYPES = /jpeg|gif|png|jpg/i
+  SUPPORTED_THUMBNAIL_IMAGE_CONTENT_TYPES = /jpeg|gif|png|jpg|webm|webp/i
   MAXIMUM_THUMBNAIL_FILE_SIZE = 5.megabytes
 
   has_paper_trail
@@ -348,7 +348,7 @@ class ProductFile < ApplicationRecord
       return unless thumbnail.attached?
 
       unless thumbnail.image? && thumbnail.content_type.match?(SUPPORTED_THUMBNAIL_IMAGE_CONTENT_TYPES)
-        errors.add(:base, "Please upload a thumbnail in JPG, PNG, or GIF format.")
+        errors.add(:base, "Please upload a thumbnail in JPG, PNG, GIF, WebM, or WebP format.")
         return
       end
 

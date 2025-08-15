@@ -6,7 +6,7 @@ class Thumbnail < ApplicationRecord
 
   DISPLAY_THUMBNAIL_DIMENSION = 600
   MAX_FILE_SIZE = 5.megabytes
-  ALLOW_CONTENT_TYPES = /jpeg|gif|png|jpg/i
+  ALLOW_CONTENT_TYPES = /jpeg|gif|png|jpg|webm|webp/i
 
   belongs_to :product, class_name: "Link", optional: true
 
@@ -41,8 +41,8 @@ class Thumbnail < ApplicationRecord
     return unsplash_url if unsplash_url.present?
     return unless file.attached?
 
-    # Don't post process for gifs
-    return cdn_url_for(file.url) if file.content_type.include?("gif")
+    # Don't post process for gifs, webm, and webp
+    return cdn_url_for(file.url) if file.content_type.include?("gif") || file.content_type.include?("webm") || file.content_type.include?("webp")
 
     case variant
     when :default

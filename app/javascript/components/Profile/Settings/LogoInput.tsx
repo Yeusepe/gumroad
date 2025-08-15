@@ -4,7 +4,7 @@ import * as React from "react";
 import { ImageUploader } from "$app/components/ImageUploader";
 import { showAlert } from "$app/components/server-components/Alert";
 
-const ALLOWED_EXTENSIONS = ["jpeg", "jpg", "png"];
+const ALLOWED_EXTENSIONS = ["jpeg", "jpg", "png", "webm", "webp"];
 
 // This component only allows you to replace (not remove) the profile picture.
 export const LogoInput = ({
@@ -26,7 +26,7 @@ export const LogoInput = ({
       </legend>
       <ImageUploader
         id={id}
-        helpText="Your logo will be visible next to your name in your Gumroad profile and product pages. Your image should be at least 200x200px and must be in JPG or PNG format."
+        helpText="Your logo will be visible next to your name in your Gumroad profile and product pages. Your image should be at least 200x200px and must be in JPG, PNG, WebM, or WebP format."
         allowedExtensions={ALLOWED_EXTENSIONS}
         imageUrl={changing ? null : logoUrl}
         onRemove={() => {

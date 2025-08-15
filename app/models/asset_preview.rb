@@ -4,7 +4,7 @@ class AssetPreview < ApplicationRecord
   include Deletable
   include CdnUrlHelper
 
-  SUPPORTED_IMAGE_CONTENT_TYPES = /jpeg|gif|png|jpg/i
+  SUPPORTED_IMAGE_CONTENT_TYPES = /jpeg|gif|png|jpg|webm|webp/i
   DEFAULT_DISPLAY_WIDTH = 670
   RETINA_DISPLAY_WIDTH = (DEFAULT_DISPLAY_WIDTH * 1.5).to_i
 

@@ -8,6 +8,8 @@ RSpec.describe VideoFile::HasThumbnail do
   let(:jpg_image) { fixture_file_upload("test.jpg") }
   let(:png_image) { fixture_file_upload("test.png") }
   let(:gif_image) { fixture_file_upload("test.gif") }
+  let(:webm_image) { fixture_file_upload("test.webm") }
+  let(:webp_image) { fixture_file_upload("test.webp") }
 
   describe "validations" do
     context "when no thumbnail is attached" do
@@ -31,6 +33,16 @@ RSpec.describe VideoFile::HasThumbnail do
         video_file.thumbnail.attach(gif_image)
         expect(video_file.valid?).to eq(true)
       end
+
+      it "is valid with a WebM image" do
+        video_file.thumbnail.attach(webm_image)
+        expect(video_file.valid?).to eq(true)
+      end
+
+      it "is valid with a WebP image" do
+        video_file.thumbnail.attach(webp_image)
+        expect(video_file.valid?).to eq(true)
+      end
     end
 
     context "when the thumbnail has an invalid content type" do
@@ -40,13 +52,13 @@ RSpec.describe VideoFile::HasThumbnail do
       it "is invalid with a text file" do
         video_file.thumbnail.attach(txt_file)
         expect(video_file.valid?).to eq(false)
-        expect(video_file.errors[:thumbnail]).to include("must be a JPG, PNG, or GIF image.")
+        expect(video_file.errors[:thumbnail]).to include("must be a JPG, PNG, GIF, WebM, or WebP image.")
       end
 
       it "is invalid with a video file" do
         video_file.thumbnail.attach(mp4_file)
         expect(video_file.valid?).to eq(false)
-        expect(video_file.errors[:thumbnail]).to include("must be a JPG, PNG, or GIF image.")
+        expect(video_file.errors[:thumbnail]).to include("must be a JPG, PNG, GIF, WebM, or WebP image.")
       end
     end
 

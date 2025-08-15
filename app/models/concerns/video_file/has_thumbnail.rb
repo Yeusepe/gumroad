@@ -3,7 +3,7 @@
 module VideoFile::HasThumbnail
   extend ActiveSupport::Concern
 
-  THUMBNAIL_SUPPORTED_CONTENT_TYPES = /jpeg|gif|png|jpg/i
+  THUMBNAIL_SUPPORTED_CONTENT_TYPES = /jpeg|gif|png|jpg|webm|webp/i
   THUMBNAIL_MAXIMUM_SIZE = 5.megabytes
 
   included do
@@ -18,7 +18,7 @@ module VideoFile::HasThumbnail
     return unless thumbnail.attached?
 
     if !thumbnail.image? || !thumbnail.content_type.match?(THUMBNAIL_SUPPORTED_CONTENT_TYPES)
-      errors.add(:thumbnail, "must be a JPG, PNG, or GIF image.")
+      errors.add(:thumbnail, "must be a JPG, PNG, GIF, WebM, or WebP image.")
       return
     end
 

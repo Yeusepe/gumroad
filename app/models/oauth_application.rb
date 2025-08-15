@@ -17,7 +17,7 @@ class OauthApplication < Doorkeeper::Application
   validate :affiliate_basis_points_must_fall_in_an_acceptable_range
   validate :validate_file
 
-  ALLOW_CONTENT_TYPES = /jpeg|png|jpg/i
+  ALLOW_CONTENT_TYPES = /jpeg|png|jpg|webm|webp/i
   MOBILE_API_OAUTH_APPLICATION_UID = GlobalConfig.get("MOBILE_API_OAUTH_APPLICATION_UID")
 
   def validate_file
